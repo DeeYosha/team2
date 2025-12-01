@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Yosha Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .member-image {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            object-position: center center;
+            background: #f0f0f0;
+            border-radius: 50%;
+            margin: 30px auto;
+            display: block;
+            border: 5px solid #667eea;
+        }
+        
+        .member-content {
+            padding: 30px;
+        }
+        
+        .member-name {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .member-title {
+            font-size: 1.2em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .member-bio {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+        
+        .credentials {
+            margin: 25px 0;
+        }
+        
+        .credentials h3 {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .credential-item {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            font-size: 0.95em;
+        }
+        
+        .credential-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        .skills-section {
+            margin-top: 25px;
+        }
+        
+        .skills-section h3 {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            color: #667eea;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #667eea30;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .expertise-section {
+            margin-top: 25px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .expertise-section h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .expertise-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .expertise-section li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .expertise-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .member-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Meet Our Expert Team</h1>
+        <p>Dedicated professionals driving excellence in every project</p>
+    </div>
+    
+    <div class="container">
+        <div class="team-grid">
+            <!-- Team Member Card -->
+            <div class="team-member">
+                <img src="https://i.ibb.co/v6z18YcC/VVImage.jpg" alt="Vinothan Vasavan" class="member-image" crossorigin="anonymous">
+                
+                <div class="member-content">
+                    <h2 class="member-name">Vinothan Vasavan</h2>
+                    <p class="member-title">Civil & Structural Engineer</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Professional Excellence</h3>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Master's Degrees</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">London Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="member-bio">
+                        Vinothan is a highly accomplished civil and structural engineer with over 6 years of specialized expertise in delivering complex construction projects across London and the South East. His deep understanding of UK Building Regulations, British Standards, and Eurocodes ensures every project meets the stringent requirements of the British construction industry.
+                    </p>
+                    
+                    <p class="member-bio">
+                        Having successfully completed numerous high-profile projects throughout London, Vinothan brings invaluable experience in navigating the unique challenges of urban construction in the capital. His work spans residential developments, commercial buildings, and infrastructure projects, each delivered to the highest standards of safety, quality, and regulatory compliance.
+                    </p>
+                    
+                    <p class="member-bio">
+                        With distinction-level qualifications from Brunel University London and comprehensive knowledge of both structural and geotechnical engineering, Vinothan combines academic excellence with practical expertise. His proficiency in sustainable design methodologies, including LEED and BREEAM certifications, positions him at the forefront of modern, environmentally-conscious construction practices.
+                    </p>
+                    
+                    <div class="expertise-section">
+                        <h3>🏗️ UK Building Regulations & Structural Expertise</h3>
+                        <p style="color: #555; line-height: 1.8;">
+                            Vinothan possesses comprehensive knowledge of UK Building Regulations, British Standards (BS 5950, BS 8110), and Eurocodes (EN 1990-1999), ensuring every project meets stringent compliance requirements. His expertise spans structural analysis and design of steel, concrete, timber, and masonry structures, with advanced proficiency in SAP2000, ETABS, and geotechnical engineering. He specializes in CDM Regulations, party wall matters, and fire safety requirements under the Building Safety Act.
+                        </p>
+                    </div>
+                    
+                    <div class="expertise-section">
+                        <h3>🎯 London Project Delivery Excellence</h3>
+                        <p style="color: #555; line-height: 1.8;">
+                            Having successfully delivered over 50 projects across Greater London, Vinothan excels in navigating the unique challenges of urban construction in the capital. His experience includes working with London Borough planning requirements, TfL infrastructure constraints, conservation areas, and coordinating with statutory undertakers. He consistently delivers projects on time and within budget while maintaining the highest standards of quality and regulatory compliance.
+                        </p>
+                    </div>
+                    
+                    <div class="credentials">
+                        <h3>🎓 Academic Qualifications</h3>
+                        <div class="credential-item">
+                            <strong>MSc Civil Engineering (Distinction)</strong>
+                            Brunel University London, 2022-2023<br>
+                            Specialized in Structural and Geotechnical Engineering with focus on UK construction practices
+                        </div>
+                        <div class="credential-item">
+                            <strong>Masters of Engineering (Distinction)</strong>
+                            University of Moratuwa<br>
+                            Specialized in Highway and Traffic Engineering
+                        </div>
+                        <div class="credential-item">
+                            <strong>BSc (Hons) Civil Engineering (2.1)</strong>
+                            SLIIT<br>
+                            Dean's List Award 2016 | Runner-up BridgeFest Competition 2018
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h3>💼 Technical Proficiencies</h3>
+                        <div class="skills-container">
+                            <span class="skill-tag">UK Building Regulations</span>
+                            <span class="skill-tag">British Standards</span>
+                            <span class="skill-tag">Eurocodes (EN 1990-1999)</span>
+                            <span class="skill-tag">Structural Analysis</span>
+                            <span class="skill-tag">SAP2000 & ETABS</span>
+                            <span class="skill-tag">AutoCAD & Revit</span>
+                            <span class="skill-tag">Reinforced Concrete Design</span>
+                            <span class="skill-tag">Steel Structures</span>
+                            <span class="skill-tag">Timber Engineering</span>
+                            <span class="skill-tag">Geotechnical Engineering</span>
+                            <span class="skill-tag">Foundation Design</span>
+                            <span class="skill-tag">CDM Regulations</span>
+                            <span class="skill-tag">LEED & BREEAM</span>
+                            <span class="skill-tag">Sustainable Design</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Site Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- You can duplicate this structure for more team members -->
+            
+        </div>
+    </div>
+</body>
+</html>
